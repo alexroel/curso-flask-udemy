@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myblog - {% block title %}{% endblock %}</title>
+
+    {{ ckeditor.load() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo-blog.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <a href="{{ url_for('posts.index') }}" class="logo">
+                <img src="{{ url_for('static', filename='img/logo-blog.png') }}" alt="">    
+                <h1>MyBlog</h1>
+            </a>
+
+            <ul>
+                {% if g.user %}
+                <li> <b><i>{{ g.user.username }}</i></b></li>
+                <li><a href="{{ url_for('blog.blogs') }}">Admin</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.register') }}">Registrate</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    
+    {% block content %}{% endblock %}
+
+    {{ ckeditor.load(custom_url=url_for('static', filename='ckeditor/ckeditor.js')) }}
+
+    <!-- <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script> -->
+</body>
+
+</html>

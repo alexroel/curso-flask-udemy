@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Iniciar sesión{% endblock %}
+
+
+{% block content %}
+<section class="login-register">
+    <div class="content">
+        <h2>Iniciar Sesión</h2>
+        <form method="post">
+            <label for="username">Nombre de Usuario</label>
+            <input name="username" id="username" required>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+    </div>
+</section>
+{% endblock %}

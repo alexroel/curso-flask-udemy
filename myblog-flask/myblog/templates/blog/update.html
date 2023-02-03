@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Iniciar sesión{% endblock %}
+{% block content %}
+<section class="container">
+    <div class="content form-blog">
+        <div class="header-blog">
+            <h2>Editar Blog</h2>
+            <a href="{{ url_for('blog.blogs') }}">Cancelar</a>
+        </div>
+        <form method="post">
+            <label for="title">Título</label>
+            <input name="title" id="title" value="{{ post.title }}" required>
+            <label for="info">Información</label>
+            <textarea name="info" id="info" rows="3">{{ post.info }}</textarea>
+            <label for="content">Contenido</label><br>
+            <!-- Es un texarea  clas, name,id ) ckeditor -->
+            {{ ckeditor.create(value=post.content) }} 
+            <input type="submit" value="Guardar">
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Blogs{% endblock %}
+{% block content %}
+<section class="container">
+
+    <div class="content blogs">
+        <div class="header-blog">
+            <h2>Mis Blogs</h2>
+            <a href="{{ url_for('blog.create') }}">Nuevo</a>
+        </div>
+        <table>
+            <tr>
+                <th>Título</th>
+                <th>Creado</th>
+                <th colspan="2">Opciones</th>
+            </tr>
+            
+            {% for post in posts %}
+            {% if g.user.id == post.author %}
+            <tr>
+                <td>{{ post['title'] }}</td>
+                <td>{{ post['created'].strftime('%Y-%m-%d') }}</td>
+                <td><a href="{{ url_for('blog.update', id=post['id']) }}">Editar</a></td>
+                <td><a href="{{ url_for('blog.delete', id=post['id']) }}">Eliminar</a></td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            
+        </table>
+    </div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<section class="container">
+    {% for post in posts %}
+    <a class="post" href="{{ url_for('posts.blog', id=post['id']) }}">
+        <h2>{{ post['title'] }}</h2>
+        <p>
+            {{ post['info'] }}
+        </p>
+        <div class="created">
+            Por 
+            <b>{{ get_user(post.author).username}}</b> en 
+            <i>{{ post['created'].strftime('%Y-%m-%d') }}</i>
+        </div>
+    </a>
+    {% endfor %}
+
+</section>
+{% endblock %}
