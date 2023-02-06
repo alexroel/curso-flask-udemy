@@ -186,8 +186,120 @@ Plantilas de HTML, todo se carga desde la carpeta templates
 ---
 ## Archivos Estaticos 
 Todo se carga desde la carpeta static 
+
+~~~css
+body{
+    background-color: #cccccc;
+    font-family: sans-serif;
+}
+
+code{
+    font-weight: bold;
+    color: brown;
+}
+~~~
+
 ~~~html
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+~~~
+
+---
+## Datos de Formulario
+
+Crear un formularios 
+
+~~~html
+<form action="" method="post">
+    <label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" id="nombre">
+    <br>
+    <label for="edad">Edad: </label>
+    <input type="number" name="edad" id="edad">
+    <br>
+    <input type="submit" value="Enviar">
+</form>
+~~~
+
+Opten datos de Formularios 
+
+~~~python
+from flask import Flask, render_template, request
+app = Flask(__name__)
+
+@app.route('/hola', methods = ['GET', 'POST'])
+def hola():
+    print(request.form)
+    nombre = None
+    edad = None
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        edad = request.form['edad']
+        print(nombre, type(edad))
+
+        if edad == '':
+            edad = None
+        else:
+            edad = int(edad)
+    return render_template('hola.html', nombre= nombre, edad = edad)
+~~~
+
+---
+## Extendiendo Plantilla
+
+Archivo Base - `base.html`
+~~~html
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<title>MyApp - {% block title %}{% endblock %}</title>
+
+<u>
+    <li><a href="">Inicio</a></li>
+    <li><a href="">Hola</a></li>
+    <li><a href="">Code</a></li>
+</u>
+
+{% block content %}
+{% endblock %}
+~~~
+
+Pagina de inicio
+
+~~~html
+{% extends 'base.html'%}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Página de inicio</h1>
+{% endblock %}
+
+~~~
+
+---
+## Creando URLs
+
+~~~python
+from flask import Flask, render_template, request, url_for
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    #Creando rutas 
+    print(url_for('index'))
+    print(url_for('hola'))
+    print(url_for('code', code = 'print(code)'))
+    return render_template('index.html')
+~~~
+
+~~~html
+<u>
+    <li><a href="{{ url_for('index') }}">Inicio</a></li>
+    <li><a href="{{ url_for('hola') }}">Hola</a></li>
+    <li><a href="{{ url_for('code', code = 'print(code)' ) }}">Code</a></li>
+</u>
 ~~~
 
 

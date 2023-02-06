@@ -2,7 +2,6 @@ import pytest
 from flask import g, session
 from myblog import db
 from myblog.auth.models import User
-from myblog.blog.models import Post
 
 
 # TEST AUTH REGISTER

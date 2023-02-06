@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<title>Task list - {% block title %}{% endblock %}</title>
+
+<nav>
+    <h1>Task List</h1>
+
+    <ul>
+        <!-- Sesión iniciada  -->
+        {% if Flase %}
+        <li><samp>alexroel</samp></li>
+        <li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+        {% else %}
+        <li><a href="{{ url_for('auth.register') }}">Registrate</a></li>
+        <li><a href="{{ url_for('auth.login') }}">Iniciar sesión</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% block content %} {% endblock %}
+</section>
+

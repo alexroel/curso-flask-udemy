@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<title>MyApp - {% block title %}{% endblock %}</title>
+
+<u>
+    <li><a href="{{ url_for('index') }}">Inicio</a></li>
+    <li><a href="{{ url_for('hola') }}">Hola</a></li>
+    <li><a href="{{ url_for('code', code = 'print(code)' ) }}">Code</a></li>
+</u>
+
+{% block content %}
+{% endblock %}

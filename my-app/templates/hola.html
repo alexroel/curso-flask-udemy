@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block title %}Hola{% endblock %}
+
+{% block content %}
+    <br>
+    <form action="" method="post">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <label for="edad">Edad: </label>
+        <input type="number" name="edad" id="edad">
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    {% if nombre is none and edad is none%}
+        <h1>Hola Mundo!</h1>
+    {% elif edad is none %}
+        <h1>Hola, {{ nombre }}!</h1>
+    {% else %}
+        <h1>Hola, {{ nombre }} el doble de tu edad es {{ edad * 2 }}!</h1>
+    {% endif %}
+
+{% endblock %}
+
+
+
