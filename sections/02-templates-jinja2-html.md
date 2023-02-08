@@ -1,12 +1,13 @@
 # Plantillas con Jinja2 y HTML
 
-1. [¿Qué es Flask?](#¿Qué-es-Flask?)
-2. [Instalación y configuración](#Instalación-y-configuración)
-3. [Hola Mundo con Flask](#Hola-Mundo-con-Flask)
-4. [El depurado en Flask](#El-depurado-en-Flask)
-5. [Rutas y vistas](#Rutas-y-vistas)
-6. [Variables en rutas](#Variables-en-rutas)
-7. [Escape de HTML](#Escape-de-HTML)
+1. [Introducción a plantillas](#Introducción-a-plantillas)
+2. [Creación de plantillas](#Creación-de-plantillas)
+3. [Uso de variables y bucles ](#Uso-de-variables-y-bucles )
+4. [Uso de herencia de plantillas](#Uso-de-herencia-de-plantillas)
+5. [Uso de filtros y funciones](#Uso-de-filtros-y-funciones)
+6. [Cómo enviar datos a las plantillas s](#Cómo-enviar-datos-a-las-plantillas )
+7. [Enlaces y rutas](#Enlaces-y-rutas)
+8. [Integrando archivos estáticos ](#Integrando-archivos-estáticos )
 
 ---
 ## Introducción a plantillas
@@ -106,7 +107,7 @@ def index():
 ~~~
 
 ---
-## Uso de herencia de plantillas y bloques
+## Uso de herencia de plantillas
 Aquí hay un ejemplo de cómo usar la herencia de plantillas y bloques en Jinja2:
 
 `templates/base.html`
@@ -153,7 +154,7 @@ En este ejemplo, tenemos una plantilla base "base.html" que define una estructur
 El uso de bloques permite que la plantilla base defina una estructura básica que se pueda reutilizar en diferentes páginas del sitio web, mientras que las plantillas hijas pueden personalizar el contenido de cada página.
 
 ---
-## Uso de filtros y funciones personalizadas
+## Uso de filtros y funciones
 
 Aquí hay un ejemplo de código que muestra cómo usar filtros y funciones personalizadas en Jinja2:
 
