@@ -156,41 +156,60 @@ El uso de bloques permite que la plantilla base defina una estructura básica qu
 ---
 ## Uso de filtros y funciones
 
-Aquí hay un ejemplo de código que muestra cómo usar filtros y funciones personalizadas en Jinja2:
+Jinja2 es un motor de plantillas para Python que permite a los desarrolladores crear plantillas dinámicas para generar HTML, XML, o cualquier otro tipo de documento.
+
+Los filtros en Jinja2 permiten procesar y transformar valores antes de que sean mostrados en la plantilla. Los filtros se aplican utilizando el símbolo "|" y se pueden encadenar para aplicar múltiples filtros a una sola variable. Algunos ejemplos de filtros incluyen: lower, upper, title, trim, default, entre otros.
+
+Las funciones personalizadas en Jinja2 permiten extender la funcionalidad de la plantilla y proporcionar una lógica adicional en una forma reutilizable. Las funciones personalizadas se definen en Python y se pueden utilizar en la plantilla con la misma sintaxis que los filtros.
+
+Aquí hay un ejemplo de código de cómo se pueden crear y utilizar filtros y funciones personalizadas en Jinja2:
 
 ~~~html
-<p>La fecha de hoy es: {{ today|date("d/m/Y") }}</p>
-<p>El nombre en mayúsculas es: {{ name|upper }}</p>
-<p>La frase repetida: {{ repeat("Hello", 3) }}</p>
+<p>Hola, {{ name | upper }}!</p>
+
+{% for friend in friends | reverse %}
+  <li>{{ friend }}</li>
+{% endfor %}
 ~~~
 
-En este ejemplo, estamos utilizando dos filtros ("date" y "upper") y una función personalizada ("repeat"). Estos elementos se usan dentro de los corchetes dobles y se aplican a las variables "today", "name" y "repeat", respectivamente.
-
-El filtro "date" formatea una fecha en un formato específico, mientras que el filtro "upper" convierte una cadena en mayúsculas.
+En este ejemplo, estamos utilizando dos filtros ("reverse" y "upper") y un filtro y función personalizada ("repeat", "today"). 
 
 La función personalizada "repeat" toma una cadena y un número y devuelve una nueva cadena compuesta por la cadena repetida el número de veces especificado.
 
 Para hacer que estos filtros y funciones estén disponibles en la plantilla, necesitaríamos proporcionarlos en nuestro archivo Flask:
 
 ~~~python
-from flask import Flask, render_template
-from datetime import datetime
-
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    today = datetime.now()
-    name = "Alex"
-    friends = ['Alexander', 'Roel', 'Juan', 'Pedro']
-    return render_template('plantilla.html', name=name, friends = friends, today=today)
-
-@app.template_filter()
+# función personalizada
 def repeat(s, n):
     return s * n
+
+app.add_template_global(repeat, 'repeat') # Agregar función
+
+# Crea tu filtro
+@app.add_template_filter # Registrar el filtro
+def today(date):
+    return date.strftime('%d-%m-%Y')
+
+#app.add_template_filter(today, 'today')
+
+from datetime import datetime
+
+@app.route('/')
+@app.route('/index')
+def index():
+    date = datetime.now()
+    name = 'Alex'
+    friends = ['Alexander', 'Roel', 'Juan', 'Pedro']
+
+    return render_template('index.html',name = name ,friends =friends, date=date)
 ~~~
 
-En este ejemplo, hemos creado una función personalizada "repeat" y la hemos registrado como un filtro de plantilla utilizando la función "template_filter()". Luego, en la función "index", estamos proporcionando una fecha y un nombre a la plantilla.
+En este ejemplo, hemos creado una función personalizada "repeat" y la hemos registrado como un filtro de plantilla utilizando la función "app.add_template_filter()". Luego, en la función "index", estamos proporcionando una fecha y un nombre a la plantilla.
+
+~~~html
+<p>La fecha de hoy es: {{ date|today }}</p>
+<p>La frase repetida: {{ repeat("Hello", 3) }}</p>
+~~~
 
 Al ejecutar la aplicación y acceder a la página en un navegador, se mostrará la fecha actual, el nombre en mayúsculas y la frase repetida tres veces.
 
