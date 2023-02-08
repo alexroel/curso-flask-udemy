@@ -54,6 +54,13 @@ La instalación de Flask es sencilla y puede ser realizada en pocos pasos:
 
 - Instalar Flask: Puedes instalar Flask usando pip, el gestor de paquetes de Python, ejecutando el siguiente comando en la línea de comandos o terminal:
 
+### Instalación VENV y PIP en Linux 
+Si no viene instalado puedes instalar con el siguiente comando.
+~~~
+sudo apt-get install python3-pip
+sudo apt-get install python3-venv
+~~~
+
 ### Crea un entorno virtual 
 
 Para crear un entorno virtual de Python con `venv` y instalar Flask, siga estos pasos:
