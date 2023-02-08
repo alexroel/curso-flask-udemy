@@ -140,11 +140,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/hola')
-@app.route('/hola/<nombre>')
-@app.route('/hola/<nombre>/<int:edad>')
-def hola(nombre = None, edad = None):
-    return render_template('hola.html', nombre = nombre, edad = edad)
+@app.route('/hello')
+@app.route('/hello/<name>')
+@app.route('/hello/<name>/<int:age>/<email>')
+def hola(name = None, age = None, email = None):
+    my_data = {
+        'name':name,
+        'age': age,
+        'email':email
+    }
+    return render_template('hola.html', data = my_data)
 
 
 from markupsafe import escape
