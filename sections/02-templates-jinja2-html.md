@@ -5,7 +5,7 @@
 3. [Uso de variables y bucles ](#Uso-de-variables-y-bucles )
 4. [Uso de herencia de plantillas](#Uso-de-herencia-de-plantillas)
 5. [Uso de filtros y funciones](#Uso-de-filtros-y-funciones)
-6. [Cómo enviar datos a las plantillas s](#Cómo-enviar-datos-a-las-plantillas )
+6. [Cómo enviar datos a las plantillas](#Cómo-enviar-datos-a-las-plantillas )
 7. [Enlaces y rutas](#Enlaces-y-rutas)
 8. [Integrando archivos estáticos ](#Integrando-archivos-estáticos )
 
@@ -82,7 +82,7 @@ Aquí hay un ejemplo de cómo usar variables y bucles en plantillas Jinja2:
 
     <h2>Lista de amigos</h2>
     <ul>
-    {% for friends in friend %}
+    {% for friend in friends %}
         <li>{{ friend }}</li>
     {% endfor %}
     </ul>

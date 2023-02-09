@@ -139,7 +139,7 @@ Después de ejecutar este comando, puede acceder a su "Hola, mundo!" en su naveg
 
     El argumento `--app` se utiliza para especificar el nombre de la aplicación Flask que se ejecutará. En este caso, el nombre de la aplicación es "hello".
 
-    Por lo tanto, el comando completo `flask run --app hello` iniciará el servidor web para la aplicación Flask llamada "hello".
+    Por lo tanto, el comando completo `flask --app hello run` iniciará el servidor web para la aplicación Flask llamada "hello".
 
     Tenga en cuenta que antes de ejecutar este comando, debe asegurarse de que Flask está instalado en su sistema y que también ha creado una aplicación Flask llamada "hola". De lo contrario, obtendrá un error.
 
@@ -150,7 +150,7 @@ Después de ejecutar este comando, puede acceder a su "Hola, mundo!" en su naveg
 
 El depurado en Flask es el proceso de identificar y corregir errores en una aplicación Flask. Flask proporciona algunas herramientas para facilitar el depurado, incluidas las siguientes:
 
-- Modo de depuración: El argumento `--debug` se utiliza para habilitar el modo de depuración en la aplicación Flask. Cuando el modo de depuración está habilitado, Flask proporciona información detallada sobre los errores que se producen, como la pila de llamadas, el archivo y la línea de código donde se produjo el error, etc. Por lo tanto, el comando completo `flask run --app hello --debug` iniciará el servidor web para la aplicación Flask llamada "hello" con el modo de depuración habilitado.
+- Modo de depuración: El argumento `--debug` se utiliza para habilitar el modo de depuración en la aplicación Flask. Cuando el modo de depuración está habilitado, Flask proporciona información detallada sobre los errores que se producen, como la pila de llamadas, el archivo y la línea de código donde se produjo el error, etc. Por lo tanto, el comando completo `flask --app hello --debug run` iniciará el servidor web para la aplicación Flask llamada "hello" con el modo de depuración habilitado.
 
 - Registro: Flask tiene un sistema de registro que permite registrar mensajes informativos, advertencias y errores en la aplicación. El registro puede ayudar a identificar la causa de un error en tiempo real.
 
