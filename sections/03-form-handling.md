@@ -2,9 +2,9 @@
 
 1. [Introducción a los formularios](#Introducción-a-los-formularios)
 2. [Crear formularios](#Crear-formularios)
-3. [Validación-de-datos-de-formularios](#Validación-de-datos-de-formularios)
-4. [Formulario con WTForms](#Formulario-con-WTFormsk)
-5. [Personalizar Error](#Personalizar-Error )
+3. [Validación de datos de formularios](#Validación-de-datos-de-formularios)
+4. [Formulario con WTForms](#Formulario-con-WTForms)
+5. [Validación de datos con WTForm](#Validación-de-datos-con-WTForm)
 
 ---
 ## Introducción a los formularios
@@ -125,8 +125,8 @@ Aquí hay un ejemplo de código que explica cómo validar un formulario de regis
     from wtforms.validators import DataRequired, Length
 
     class RegisterForm(FlaskForm):
-        username = StringField("Nombre de usuario", validators=[DataRequired(), Length(min=4, max=25)])
-        password = PasswordField("Contraseña", validators=[DataRequired(), Length(min=6, max=40)])
+        username = StringField("Nombre de usuario")
+        password = PasswordField("Contraseña")
         submit = SubmitField("Registrarse")
     ~~~
 3. Definir una ruta en Flask que se encargará de manejar la solicitud del formulario:
@@ -152,23 +152,19 @@ Aquí hay un ejemplo de código que explica cómo validar un formulario de regis
     ~~~
 
 ---
-## Personalizar Error 
-Puedes personalizar los mensajes de error en un formulario de WTForms de varias maneras. Una manera es a través de la definición de mensajes de error en los validadores. Por ejemplo, aquí está la definición de un validador para el campo "username" que muestra un mensaje de error personalizado si el nombre de usuario es demasiado corto:
+## Validación de datos con WTForm
+WTForms es una biblioteca de formularios de Python que facilita la validación de datos de formularios en aplicaciones Flask. Aquí hay un ejemplo de cómo se puede implementar la validación de datos en una aplicación Flask usando WTForms:
 
-~~~python
-from wtforms.validators import DataRequired, Length
+ ~~~python
+    from flask_wtf import FlaskForm
+    from wtforms import StringField, PasswordField, SubmitField
+    from wtforms.validators import DataRequired, Length
 
-class RegisterForm(FlaskForm):
-    username = StringField("Nombre de usuario", validators=[
-        DataRequired(message="El nombre de usuario es requerido"),
-        Length(min=4, max=25, message="El nombre de usuario debe tener entre 4 y 25 caracteres")
-    ])
-    password = PasswordField("Contraseña", validators=[
-        DataRequired(message="La contraseña es requerida"),
-        Length(min=6, max=40, message="La contraseña debe tener entre 6 y 40 caracteres")
-    ])
-    submit = SubmitField("Registrarse")
-~~~
+    class RegisterForm(FlaskForm):
+        username = StringField("Nombre de usuario", validators=[DataRequired(), Length(min=4, max=25)])
+        password = PasswordField("Contraseña", validators=[DataRequired(), Length(min=6, max=40)])
+        submit = SubmitField("Registrarse")
+    ~~~
 
 
 
