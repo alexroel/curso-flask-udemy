@@ -1,5 +1,0 @@
-flask
-Flask-SQLAlchemy
-psycopg2
-Flask-WTF
-Flask-CKEditor

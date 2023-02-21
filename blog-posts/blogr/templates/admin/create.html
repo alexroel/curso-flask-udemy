@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="header mb-4 mt-4">
+            <h1 class="h3">{% block title %} Crear Blog {% endblock %} </h1>
+        </div>
+        <div class="body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="url" class="form-label">URL</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="ejemplo-title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Título del blog" required>
+                </div>
+                <div class="mb-3">
+                    <label for="info" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="info" name="info" rows="3"
+                        placeholder="Breve descripción del blog"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="contentInput" class="form-label">Contenido</label>
+                    <!-- Es un texarea  class, name,id ) ckeditor -->
+                    {{ ckeditor.create() }}
+                </div>
+                <button type="submit" class="btn btn-primary mb-5">Gurdar</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

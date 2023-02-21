@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPosts - Inicio</title>
+
+    <!-- Estilos de bootstrap y de app -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="img/bp-light.png" alt="blog posts" width="40">
+                </a>
+
+                <div class="text-end">
+                    <a href="auth/login.html" class="btn btn-outline-light me-2">Iniciar sesión</a>
+                    <a href="auth/register.html" class="btn btn-warning">Registrate</a>
+
+                    <a href="#" class="link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+
+                        <li>
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="admin/create.html">
+                                <span class="d-inline-block bg-success rounded-circle p-1"></span>
+                                Crear Blog
+                            </a>
+                        </li>
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="admin/posts.html">
+                                <span class="d-inline-block bg-primary rounded-circle p-1"></span>
+                                Mis Blogs
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="auth/profile.html">
+                                <span class="d-inline-block bg-info rounded-circle p-1"></span>
+                                Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+                                <span class="d-inline-block bg-danger rounded-circle p-1"></span>
+                                Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de bienvenida -->
+    <section class="container">
+        <div class="row">
+            <div class="col-md-6 py-5">
+                <h1 class="display-4 fst-italic">Bienvenido a BLOG SPOTS</h1>
+                <p>Aquí podrás compartir tus ideas, pensamientos y experiencias con una comunidad global de lectores.
+                    Nuestra plataforma es fácil de usar y te permite publicar tus blogs en pocos pasos.
+                </p>
+                <p>
+                    Para empezar, simplemente haz clic en el botón "Publica tu blog" y comienza a escribir. Puedes
+                    incluir
+                    imágenes y videos para dar vida a tus publicaciones y asegurarte de que sean atractivas para tus
+                    lectores.</p>
+                <p>
+                    ¡Únete a nuestra comunidad hoy y comienza a compartir tus ideas con el mundo!
+                </p>
+                <a href="auth/register.html" class="btn btn-outline-dark w-50 fs-3">Registrate</a>
+
+            </div>
+            <div class="col-md-6">
+                <img src="img/bloguer.jpg" alt="Imagen de bienvenida" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <div class="text-center">
+        <div class="py-5">
+            <h2 class="display-4 fst-italic">¿Buscas algo en particular?</h2>
+            <div class="col-lg-6 mx-auto">
+                <p class="fs-5 mb-4">Utiliza nuestro buscador para encontrar blogs específicos o temas que te interesen.
+                    Simplemente ingresa una
+                    palabra clave o frase y haz clic en "buscar". ¡Te sorprenderá lo fácil que es encontrar el contenido
+                    que
+                    buscas!
+                </p>
+
+                <div class="col container">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search"
+                            placeholder="Buscar" aria-label="Search">
+                        <button type="button" class="btn btn-primary btn-lg">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Etiquetas HTML</h3>
+                        <span class="mb-1 text-muted">Nov 12</span>
+                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                            lead-in to
+                            additional content.</p>
+                        <a href="blog.html" class="stretched-link">Continuar leendo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Etiquetas HTML que deves conocer</h3>
+                        <span class="mb-1 text-muted">Nov 12</span>
+                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                            lead-in to
+                            additional content.</p>
+                        <a href="blog.html" class="stretched-link">Continuar leendo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Etiquetas HTML que deves conocer</h3>
+                        <span class="mb-1 text-muted">Nov 12</span>
+                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                            lead-in to
+                            additional content.</p>
+                        <a href="blog.html" class="stretched-link">Continuar leendo</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Etiquetas HTML</h3>
+                        <span class="mb-1 text-muted">Nov 12</span>
+                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                            lead-in to
+                            additional content.</p>
+                        <a href="blog.html" class="stretched-link">Continuar leendo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Etiquetas HTML que deves conocer</h3>
+                        <span class="mb-1 text-muted">Nov 12</span>
+                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                            lead-in to
+                            additional content.</p>
+                        <a href="blog.html" class="stretched-link">Continuar leendo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h3 class="mb-0">Etiquetas HTML que deves conocer</h3>
+                        <span class="mb-1 text-muted">Nov 12</span>
+                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
+                            lead-in to
+                            additional content.</p>
+                        <a href="blog.html" class="stretched-link">Continuar leendo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
