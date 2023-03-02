@@ -1,0 +1,9 @@
+.socila-icon{
+    color: #cccccc;
+    margin: 0 5px;
+    font-size: 30px;
+}
+
+.socila-icon:hover{
+    color: #ffffff;
+}
