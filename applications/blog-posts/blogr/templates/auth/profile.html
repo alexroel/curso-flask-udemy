@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <form method="post" class="row mt-5" enctype="multipart/form-data">
+        <div class="col-md-4">
+            <div class="text-center">
+                {% if user.photo is none %}
+                <img src="{{ url_for('static', filename = 'img/user-dark.png') }}" width="100"
+                    class="profile-image rounded-circle mb-2" alt="Foto de perfil">
+                {% else %}
+                <img src="{{ url_for('static', filename = user.photo ) }}" width="100"
+                    class="profile-image rounded-circle mb-2" alt="Foto de perfil">
+                {% endif %}
+                <div class="mb-3">
+                    <input type="file" id="photo" name="photo" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h1>{% block title %} Perfil de Usuario {% endblock %}</h1>
+            <hr class="mb-4">
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{user.username}}"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{user.email}}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Cambiar Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="header mb-4 mt-4">
+            <h1 class="h3">{% block title %}Editar Blog {% endblock %}</h1>
+        </div>
+        <div class="body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="title" name="title" required value="{{ post.title }}"
+                        placeholder="Título del blog">
+                </div>
+                <div class="mb-3">
+                    <label for="info" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="info" name="info" rows="3"
+                        placeholder="Breve descripción del blog">{{ post.info }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="contentInput" class="form-label">Contenido</label>
+                    {{ ckeditor.create(value=post.content) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

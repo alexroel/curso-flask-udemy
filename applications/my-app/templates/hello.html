@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Página de Hello{% endblock %}
+
+{% block content %}
+    {% if data.name == None and data.age == None %}
+        <h1>Hola Mundo!</h1>
+    {% elif data.age == None %}
+        <h1>Hola, {{ data.name }}!</h1>
+    {% elif data.email == None %}
+        <h1>Hola, {{ data.name }} el doble tu edad es {{data.age * 2 }}!</h1>
+    {% else %}
+    <h2>Mis datos</h2>
+    <ul>
+        <li>Nombre: {{ data.name }}</li>
+        <li>Edad: {{ data.age }}</li>
+        <li>Email: {{ data.email }}</li>
+    </ul>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Email enviado{% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4"><i class="fas fa-check-circle text-success"></i>¡Correo
+                        enviado!</h2>
+                    <p class="card-text text-center">Tu mensaje ha sido enviado correctamente.</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-success d-block mx-auto mt-4"><i class="fas fa-home"></i> Volver
+                        a inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

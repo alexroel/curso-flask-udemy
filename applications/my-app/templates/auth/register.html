@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar usuario{% endblock %}
+
+{% block content %}
+<h1>Registrar usuario</h1>
+
+<form action="" method="post">
+    {{ form.hidden_tag()}}
+    {{ form.username.label }} {{ form.username }}
+    {{ form.password.label }} {{ form.password }}
+    {{ form.submit }}
+</form>
+
+<!-- <form action="" method="post">
+    <label for="username">Nombre de usuario</label>
+    <input type="text" name="username" id="username" required>
+    <br><br>
+    <label for="password">Contraseña</label>
+    <input type="password" name="password" id="password" required>
+    <br><br>
+    <input type="submit" value="Registrar">
+</form> -->
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+{% endblock %}

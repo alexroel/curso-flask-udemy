@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mi sitio web - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('hello') }}">Hola</a></li>
+                <li><a href="{{ url_for('code', code = 'print(code)') }}">Code</a></li>
+                <li><a href="{{ url_for('register') }}">Registrar usuario</a></li>
+            </ul>
+        </nav>
+        
+        {% block content %}
+        <!-- Bloque de contenido -->
+        {% endblock %}
+
+        <script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Página de blog -->
+
+    <article class="container blog-post">
+        <h1 class="blog-post-title mb-1">{% block title %} {{ post.title }} {%endblock%}</h1>
+        <p class="card-text mt-3">
+            {% if get_user(post.author).photo is none %}
+            <img src="{{ url_for('static', filename = 'img/user-dark.png') }}" alt="mdo" width="30" class="rounded-circle">
+            {% else %}
+            <img src="{{ url_for('static', filename = get_user(post.author).photo ) }}" alt="mdo" width="30"
+                class="rounded-circle">
+            {% endif %}
+            
+            <span class="mb-1 text-muted"> <b>{{ get_user(post.author).username}}</b> - {{
+                post.created.strftime('%d de %B %Y') }}</span>
+        </p>
+
+        <p class="mb-5 mt-5"> {{ post.info }} </p>
+        <hr>
+
+        <div class="mb-5 mt-5">
+            {{ post['content'] | safe }} 
+        </div>
+    </article>
+
+{% endblock %}

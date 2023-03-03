@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPosts - {% block title %}{% endblock %}</title>
+
+    <!-- Estilos de bootstrap y de app -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="{{ url_for('home.index') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="{{ url_for('static', filename = 'img/bp-light.png') }}" alt="blog posts" width="40">
+                </a>
+
+                <div class="text-end">
+                    {% if not g.user %}
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light me-2">Iniciar sesión</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-warning">Registrate</a>
+
+                    {% else %}
+
+                    <a href="#" class="link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                        {% if g.user.photo is none %}
+                        <img src="{{ url_for('static', filename = 'img/user-light.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                        {% else %}
+                        <img src="{{ url_for('static', filename = g.user.photo) }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu text-small">
+
+                        <li>
+                            <span class="dropdown-item fw-bold">¡Hola, {{g.user.username}}</span>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ url_for('post.create') }}">
+                                <span class="d-inline-block bg-success rounded-circle p-1"></span>
+                                Crear Blog
+                            </a>
+                        </li>
+                        
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ url_for('post.posts') }}">
+                                <span class="d-inline-block bg-primary rounded-circle p-1"></span>
+                                Mis Blogs
+                            </a>
+                       
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ url_for('auth.profile', id = g.user.id) }}">
+                                <span class="d-inline-block bg-info rounded-circle p-1"></span>
+                                Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ url_for('auth.logout') }}">
+                                <span class="d-inline-block bg-danger rounded-circle p-1"></span>
+                                Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+    
+
+    {% for massage in get_flashed_messages() %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="alert {% block message %} alert-danger {% endblock %}" role="alert">
+                    {{ massage }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <!-- Sección de bloque de contenido -->
+    {% block content %}
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename = 'js/bootstrap.bundle.min.js') }}"></script>
+    {{ ckeditor.load() }}
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<section class="container p-5" id="portfolio">
+    <h2 class="text-center"> Mis Proyectos</h2>
+    <hr class="mb-5">
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='img/todo-list.png') }}" alt="Imagen del proyecto"
+                    class="d-block mx-lg-auto img-fluid">
+
+                <div class="card-body">
+                    <h5 class="card-title">Lista de tarea - Flask</h5>
+                    <p class="card-text">Este es un proyecto de gestor de lista de tareas que esta desarrolado con flask
+                        y base de datos relacional.</p>
+                    <a href="#" class="nav-link text-primary">Link aqui.</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='img/blog-post.png') }}" class="d-block mx-lg-auto img-fluid"
+                    alt="Imagen del proyecto">
+                <div class="card-body">
+                    <h5 class="card-title">BlogPosts - Flask</h5>
+                    <p class="card-text">Este es un proyecto completo blogs y tambiem puedes administrar y publicar tus
+                        propios blogs que tambien esta echo Flask y PostgreSQL.</p>
+                    <a href="#" class="nav-link text-primary">Link aqui.</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <img src="{{ url_for('static', filename='img/api-contact.png') }}" class="d-block mx-lg-auto img-fluid"
+                    alt="Imagen del proyecto">
+                <div class="card-body">
+                    <h5 class="card-title">API Contactos - Flask</h5>
+                    <p class="card-text">Este es un proyecto de tipo API-REST para administrar lista de contatos que
+                        esta echo con Flask y una base de datos relacional.</p>
+                    <a href="#" class="nav-link text-primary">Link aqui.</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Agrega más tarjetas de proyectos si lo deseas -->
+
+    </div>
+</section>

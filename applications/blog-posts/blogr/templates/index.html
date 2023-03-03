@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Sección de bienvenida -->
+<section class="container" {{ value }}>
+    <div class="row">
+        <div class="col-md-6 py-5">
+            <h1 class="display-4 fst-italic">{% block title %}Bienvenido a BLOG SPOTS {% endblock %}</h1>
+            <p>Aquí podrás compartir tus ideas, pensamientos y experiencias con una comunidad global de lectores.
+                Nuestra plataforma es fácil de usar y te permite publicar tus blogs en pocos pasos.
+            </p>
+            <p>
+                Para empezar, simplemente haz clic en el botón "Publica tu blog" y comienza a escribir. Puedes
+                incluir
+                imágenes y videos para dar vida a tus publicaciones y asegurarte de que sean atractivas para tus
+                lectores.</p>
+            <p>
+                ¡Únete a nuestra comunidad hoy y comienza a compartir tus ideas con el mundo!
+            </p>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-outline-dark w-50 fs-3">Registrate</a>
+
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename = 'img/bloguer.jpg') }}" alt="Imagen de bienvenida"
+                class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<div class="text-center">
+    <div class="py-5">
+        <h2 class="display-4 fst-italic">¿Buscas algo en particular?</h2>
+        <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4">Utiliza nuestro buscador para encontrar blogs específicos o temas que te interesen.
+                Simplemente ingresa una
+                palabra clave o frase y haz clic en "buscar". ¡Te sorprenderá lo fácil que es encontrar el contenido
+                que
+                buscas!
+            </p>
+
+            <div class="col container">
+                <form class="d-flex" method="post">
+                    <input class="form-control me-2" type="search"  name="search" placeholder="Buscar" aria-label="Search">
+                    <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="container py-5">
+    <div class="row">
+        {% for post in posts | reverse %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">{{post.title}}</h3>
+
+                    <p class="card-text mb-auto">{{ post.info }}</p>
+                    <a href="{{ url_for('home.blog', url = post.url) }}" class="stretched-link">Continuar leendo</a>
+                    <p class="card-text mt-3">
+                        {% if get_user(post.author).photo is none %}
+                        <img src="{{ url_for('static', filename = 'img/user-dark.png') }}" alt="mdo" width="30" class="rounded-circle">
+                        {% else %}
+                        <img src="{{ url_for('static', filename = get_user(post.author).photo ) }}" alt="mdo" width="30"
+                            class="rounded-circle">
+                        {% endif %}
+                        <span class="mb-1 text-muted"> <b>{{ get_user(post.author).username }}</b> - {{
+                            post.created.strftime('%d de %B %Y') }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

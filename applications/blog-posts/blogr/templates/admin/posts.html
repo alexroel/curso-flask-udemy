@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="header">
+            <h2 class="mb-3 mt-3">{% block title %}Tus publicaciones {% endblock %}</h2>
+            <div class="d-flex justify-content-between mb-3">
+                <p>¡Bienvenido al panel de administración de blogs!</p>
+                <a href="{{ url_for('post.create') }}" class="btn btn-outline-success">AÑADIR BLOG</a>
+            </div>
+        </div>
+        <table class=" table">
+            <thead>
+                <tr>
+                    <th class="fs-5">Título del Blog </th>
+                    <th colspan="2" class="fs-5">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts | reverse %}
+                {% if g.user.id == post.author %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>
+                        <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+
+    {% block message %} alert-success {% endblock %}
+ 

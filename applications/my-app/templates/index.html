@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Página de inicio{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido a mi sitio web</h1>
+    {% if name %}
+      <p>Hola, {{ name | upper }}!</p>
+    {% else %}
+      <p>Hola, desconocido!</p>
+    {% endif %}
+
+    <h2>Lista de amigos</h2>
+    <ul>
+    {% for friend in friends | reverse %}
+        <li>{{ friend }}</li>
+    {% endfor %}
+    </ul>
+
+    <p>La fecha de hoy es: {{ date | today }}</p>
+    <p>La frase repetida: {{ repeat("Hola ", 5) }}</p>
+{% endblock %}
